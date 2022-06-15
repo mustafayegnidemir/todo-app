@@ -14,14 +14,23 @@
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
+            <th></th>
             <th>Description</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of getItems()">
+          <tr *ngFor="let item of getItems(); let i=index">
+            <td>{{i+1}}</td>
             <td>{{ item.description}}</td>
-            <td>{{ item.action}}</td>
+            <td [ngSwitch]="item.action">
+              <p *ngSwitchCase="true">
+                Yes
+              </p>
+              <p *ngSwitchCase="false">
+                No
+              </p>
+            </td>
           </tr>
         </tbody>
       </table>
